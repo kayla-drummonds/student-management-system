@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang=en>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Update Student</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">                
+                <!-- Navbar tabs -->
+                	<ul class = "nav nav-tabs" role = "tablist">
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/home}">Home</a>
+                		</li>
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/courses/all}">All Courses</a>
+                		</li>
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/studentcourses/new}">Add New Course</a>
+                		</li>
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/registration}">Register New Student</a>
+                		</li>
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/students}">All Students</a>
+                		</li>
+                		<li class="nav-item">
+                			<a class="nav-link" data-toggle="tab" th:href="@{/logout}">Log Out</a>
+                		</li>
+                	</ul>                             
+            </div>
+        </div>
+    </nav>
+
+    <br>
+	
+	<div class="tab-content">
+		<div id="registration" class="container tab-pane active">
+	        <div class="row">
+	            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card bg-light">
+	                <h1 class="text-center">Update Student</h1>
+	                <br>
+	                <div class="card-body">
+	                    <form th:action="@{/students/{id} (id=${student.id})}" th:object="${student}" method="POST" id="formRegister" >
+	                        <div class="form-group row">
+	                        	<label class="form-label">Student Full Name</label>
+	                        	<input type="text" name="name" th:field="${student.name}" class="form-control" placeholder="Name"
+	                                required />
+	                        </div>	                  
+	                        <div class="form-group row">
+	                            <label class="form-label">Username</label>
+	                            <input type="text" name="username" th:field="${student.username}" class="form-control"
+	                                placeholder="Username" required />	                            
+	                        </div>
+	                        <div class="form-group row">
+	                            <label class="form-label">E-mail</label>
+	                            <input type="email" name="email" th:field="${student.email}" class="form-control"
+	                                placeholder="Email" required />
+	                        </div>
+	                        <div class="form-group row">
+	                            <label class="form-label">Password</label>
+	                            <input type="password" name="password" th:field="${student.password}" class="form-control"
+	                                placeholder="Password" required />
+	                        </div>
+	                        <div class="box-footer">
+	                            <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    
+    <div id="feedback">
+
+    </div>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="javascript/validation.js"></script>
+</body>
+
+</html>

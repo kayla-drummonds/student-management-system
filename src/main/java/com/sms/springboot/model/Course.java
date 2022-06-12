@@ -67,7 +67,6 @@ public class Course implements Serializable {
 	}
 
 	public boolean isPresent() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

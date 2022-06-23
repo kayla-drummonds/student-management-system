@@ -16,7 +16,7 @@ public class StudentCourse {
 	private Long id;
 
 	@Column
-	private int studentId;
+	private int sId;
 
 	@Column
 	private int courseId;
@@ -28,9 +28,9 @@ public class StudentCourse {
 
 	}
 
-	public StudentCourse(int studentId, int courseId, double progress) {
+	public StudentCourse(int sId, int courseId, double progress) {
 		super();
-		this.studentId = studentId;
+		this.sId = sId;
 		this.courseId = courseId;
 		this.progress = progress;
 	}
@@ -43,12 +43,12 @@ public class StudentCourse {
 		this.id = id;
 	}
 
-	public int getStudentId() {
-		return studentId;
+	public int getSId() {
+		return sId;
 	}
 
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
+	public void setSId(int sId) {
+		this.sId = sId;
 	}
 
 	public int getCourseId() {
@@ -69,7 +69,7 @@ public class StudentCourse {
 
 	@Override
 	public String toString() {
-		return "StudentCourse [id=" + id + ", studentId=" + studentId + ", courseId=" + courseId + ", progress="
+		return "StudentCourse [id=" + id + ", studentId=" + sId + ", courseId=" + courseId + ", progress="
 				+ progress + "]";
 	}
 		

@@ -35,9 +35,9 @@ public class Course implements Serializable {
 
 	@Column
 	private String name;
-	
+
 	@ManyToOne
-	@JoinColumn(name="department_id")
+	@JoinColumn(name = "department_id")
 	public Department department;
 
 }

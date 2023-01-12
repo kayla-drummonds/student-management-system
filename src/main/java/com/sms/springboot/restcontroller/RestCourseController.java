@@ -1,24 +1,22 @@
 package com.sms.springboot.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sms.springboot.model.Course;
-import com.sms.springboot.service.CourseService;
+import com.sms.springboot.service.impl.CourseServiceImpl;
 
 @RestController
-@RequestMapping("/api/courses")
+@RequestMapping("/courses")
 public class RestCourseController {
 
 	@Autowired
-	private CourseService courseService;
+	private CourseServiceImpl courseService;
 
-	public RestCourseController(CourseService courseService) {
+	public RestCourseController(CourseServiceImpl courseService) {
 		super();
 		this.courseService = courseService;
 	}
@@ -27,8 +25,8 @@ public class RestCourseController {
 
 	// build get a course by id REST API
 	@GetMapping("/{id}")
-	public ResponseEntity<Course> getCourseById(@PathVariable("id") Long id) {
+	public Course getCourseById(@PathVariable("id") Long id) {
 		Course course = courseService.getCourseById(id);
-		return new ResponseEntity<>(course, HttpStatus.OK);
+		return course;
 	}
 }

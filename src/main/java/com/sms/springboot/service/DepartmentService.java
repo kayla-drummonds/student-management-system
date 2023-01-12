@@ -9,6 +9,4 @@ import com.sms.springboot.model.Department;
 @Component
 public interface DepartmentService {
 	List<Department> getAllDepartments();
-	Department getDepartmentById(Long id);
-
 }

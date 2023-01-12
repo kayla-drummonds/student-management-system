@@ -10,26 +10,29 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-md navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">                
                 <!-- Navbar tabs -->
-                	<ul class = "nav nav-tabs" role = "tablist">
+                	<ul class = "nav nav-tabs" role="tablist">
                 		<li class="nav-item">
                 			<a class="nav-link" data-toggle="tab" th:href="@{/home}">Home</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/courses/all}">All Courses</a>
+                			<a class = "nav-link" data-toggle="tab" th:href="@{/courses/all}">Courses</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/studentcourses/new}">Add New Course</a>
+                			<a class="nav-link" data-toggle="tab" th:href="@{/departments}">Departments</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/registration}">Register New Student</a>
+                			<a class="nav-link" data-toggle="tab" th:href="@{/faculty}">Faculty</a>
                 		</li>
-                		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/students}">All Students</a>
-                		</li>
+                		<li class="nav-item dropdown">
+                			<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">Students</a>
+                			<ul class="dropdown-menu">
+                				<li><a class="dropdown-item" th:href="@{/students}">All Students</a></li>
+                				<li><a class="dropdown-item" th:href="@{/registration}">Register New Student</a></li>
+                			</ul>
                 		<li class="nav-item">
                 			<a class="nav-link" data-toggle="tab" th:href="@{/logout}">Log Out</a>
                 		</li>
@@ -37,9 +40,8 @@
             </div>
         </div>
     </nav>
-
     <br>
-	
+	<br>
 	<div class="tab-content">
 		<div id="registration" class="container tab-pane active">
 	        <div class="row">

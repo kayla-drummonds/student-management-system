@@ -14,22 +14,25 @@
         <div class="container">
             <div class="navbar-header">                
                 <!-- Navbar tabs -->
-                	<ul class = "nav nav-tabs" role = "tablist">
+                	<ul class = "nav nav-tabs" role="tablist">
                 		<li class="nav-item">
                 			<a class="nav-link" data-toggle="tab" th:href="@{/home}">Home</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/courses/all}">All Courses</a>
+                			<a class = "nav-link" data-toggle="tab" th:href="@{/courses/all}">Courses</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link active" data-toggle="tab" th:href="@{/studentcourses/new}">Add New Course</a>
+                			<a class="nav-link" data-toggle="tab" th:href="@{/departments}">Departments</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/registration}">Register New Student</a>
+                			<a class="nav-link" data-toggle="tab" th:href="@{/faculty}">Faculty</a>
                 		</li>
-                		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/students}">All Students</a>
-                		</li>
+                		<li class="nav-item dropdown">
+                			<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">Students</a>
+                			<ul class="dropdown-menu">
+                				<li><a class="dropdown-item" th:href="@{/students}">All Students</a></li>
+                				<li><a class="dropdown-item" th:href="@{/registration}">Register New Student</a></li>
+                			</ul>
                 		<li class="nav-item">
                 			<a class="nav-link" data-toggle="tab" th:href="@{/logout}">Log Out</a>
                 		</li>
@@ -37,6 +40,8 @@
             </div>
         </div>
     </nav>
+    <br>
+    <br>
     <div class="tab-content">
     	<div id = "student_courses" class="container tab-pane active">
 		<div class="row">
@@ -51,17 +56,15 @@
 		<table class="table table-striped table-bordered table-hover">
 			<thead class="table-light">
 				<tr>
-					<th>Information ID</th>
 					<th>Student ID</th>
 					<th>Course ID</th>
 					<th>Progress</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="course: ${studentcourse}">
-					<td th:text="${studentcourse.id}"></td>
-					<td th:text="${studentcourse.sId}"></td>
-					<td th:text="${studentcourse.courseId}"></td>
+				<tr th:each="studentcourse : ${studentcourses}">
+					<td th:text="${studentcourse.student.id}"></td>
+					<td th:text="${studentcourse.course.id}"></td>
 					<td th:text="${studentcourse.progress}"></td>
 				</tr>
 			</tbody>

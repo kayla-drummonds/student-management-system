@@ -1,16 +1,27 @@
 package com.sms.springboot.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "course")
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Table(name = "courses")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Course implements Serializable {
 
 	/**
@@ -19,55 +30,14 @@ public class Course implements Serializable {
 	private static final long serialVersionUID = 5950518833082521767L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Column
 	private String name;
-
-	@Column
-	private int deptId;
-
-	public Course() {
-
-	}
-
-	public Course(String name, int deptId) {
-		this.name = name;
-		this.deptId = deptId;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getDeptId() {
-		return deptId;
-	}
-
-	public void setDeptId(int deptId) {
-		this.deptId = deptId;
-	}
-
-	@Override
-	public String toString() {
-		return "Course [id=" + id + ", name=" + name + ", deptId=" + deptId + "]";
-	}
-
-	public boolean isPresent() {
-		return false;
-	}
+	
+	@ManyToOne
+	@JoinColumn(name="department_id")
+	public Department department;
 
 }

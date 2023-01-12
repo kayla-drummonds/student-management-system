@@ -5,33 +5,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "studentcourse")
+@Table(name = "studentcourses")
 public class StudentCourse {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column
-	private int sId;
+	@ManyToOne
+	@JoinColumn(name="student_id")
+	public Student student;
 
-	@Column
-	private int courseId;
+	@ManyToOne
+	@JoinColumn(name="course_id")
+	public Course course;
 
-	@Column(name = "progress", nullable = false)
+	@Column(name = "progress")
 	private double progress;
 
 	public StudentCourse() {
 
 	}
 
-	public StudentCourse(int sId, int courseId, double progress) {
-		super();
-		this.sId = sId;
-		this.courseId = courseId;
+	public StudentCourse(Student student, Course course, double progress) {
+		this.student = student;
+		this.course = course;
 		this.progress = progress;
 	}
 
@@ -43,20 +46,20 @@ public class StudentCourse {
 		this.id = id;
 	}
 
-	public int getSId() {
-		return sId;
+	public Student getStudent() {
+		return student;
+	}
+	
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-	public void setSId(int sId) {
-		this.sId = sId;
+	public Course getCourse() {
+		return course;
 	}
 
-	public int getCourseId() {
-		return courseId;
-	}
-
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public double getProgress() {
@@ -69,8 +72,8 @@ public class StudentCourse {
 
 	@Override
 	public String toString() {
-		return "StudentCourse [id=" + id + ", studentId=" + sId + ", courseId=" + courseId + ", progress="
-				+ progress + "]";
+		return "StudentCourse [id=" + id + ", student=" + student + ", course=" + course + ", progress=" + progress
+				+ "]";
 	}
 		
 }

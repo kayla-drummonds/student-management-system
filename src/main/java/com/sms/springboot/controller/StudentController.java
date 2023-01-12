@@ -71,4 +71,10 @@ public class StudentController {
 		studentService.deleteStudentById(id);
 		return "redirect:/students";
 	}
+	
+	@GetMapping("/students/studentcourses/{id}")
+	public String ListStudentCourses(Model model) {
+		model.addAttribute("studentcourses", studentService.getAllStudentCourses());
+		return "student_courses";
+	}
 }

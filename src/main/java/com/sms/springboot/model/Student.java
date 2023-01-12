@@ -6,12 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "student", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
-		@UniqueConstraint(columnNames = { "email" }), @UniqueConstraint(columnNames = {"id"})
-})
+@Table(name = "students")
 public class Student {
 
 	@Id
@@ -29,6 +26,7 @@ public class Student {
 
 	@Column
 	private String password;
+
 
 	public Student() {
 
@@ -82,10 +80,12 @@ public class Student {
 		this.password = password;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", username=" + username + ", name=" + name + ", email=" + email + ", password="
 				+ password + "]";
 	}
+
 
 }

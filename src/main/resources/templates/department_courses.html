@@ -18,14 +18,18 @@
                 		<li class="nav-item">
                 			<a class="nav-link" data-toggle="tab" th:href="@{/home}">Home</a>
                 		</li>
-                		<li class="nav-item">
-                			<a class = "nav-link" data-toggle="tab" th:href="@{/courses/all}">Courses</a>
+                		<li class="nav-item dropdown">
+                			<a class = "nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Courses</a>
+                			<ul class="dropdown-menu">
+                				<li><a class="dropdown-item" th:href="@{/courses/all}">All Courses</a></li>
+                				<li><a class="dropdown-item" th:href="@{/courses/new}">Add New Course</a></li>
+                			</ul>
                 		</li>
-                		<li class="nav-item">
-                			<a class="nav-link active" data-toggle="tab" th:href="@{/departments}">Departments</a>
-                		</li>
-                		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/faculty}">Faculty</a>
+                		<li class="nav-item dropdown">
+                			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Departments</a>
+                			<ul class="dropdown-menu">
+                				<li><a class="dropdown-item" th:href="@{/departments}">All Departments</a></li>
+                			</ul>
                 		</li>
                 		<li class="nav-item dropdown">
                 			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Students</a>
@@ -45,20 +49,22 @@
     <div class="tab-content">
     	<div id = "courses" class="container tab-pane active text-center">
 	        <div>
-	            <h1>List of Departments</h1>
+	            <h1>List of Courses</h1>
 	        </div>
 	        <div>
-	            <table class="table table-hover table-bordered">
+	            <table class="table table-striped table-bordered">
 	                <thead class="table-info">
 	                    <tr>
 	                    	<th>Department ID</th>
-	                        <th>Department Name</th>
+	                    	<th>Course ID</th>
+	                        <th>Course Name</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr th:each="department: ${departments}">
-	                    	<td th:text="${department.id}"></td>
-	                        <td th:text="${department.name}"></td>
+	                    <tr th:each="course: ${courses}">
+	                    	<td th:text="${course.department.id}"></td>
+	                    	<td th:text="${course.id}"></td>
+	                        <td th:text="${course.name}"></td>
 	                    </tr>
 	                </tbody>
 	            </table>

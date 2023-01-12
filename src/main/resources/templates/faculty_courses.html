@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>List Students</title>
+    <title>List Faculty Courses</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,10 +27,10 @@
                 			<a class="nav-link" data-toggle="tab" th:href="@{/departments}">Departments</a>
                 		</li>
                 		<li class="nav-item">
-                			<a class="nav-link" data-toggle="tab" th:href="@{/faculty}">Faculty</a>
+                			<a class="nav-link active" data-toggle="tab" th:href="@{/faculty}">Faculty</a>
                 		</li>
                 		<li class="nav-item dropdown">
-                			<a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">Students</a>
+                			<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Students</a>
                 			<ul class="dropdown-menu">
                 				<li><a class="dropdown-item" th:href="@{/students}">All Students</a></li>
                 				<li><a class="dropdown-item" th:href="@{/registration}">Register New Student</a></li>
@@ -45,33 +45,24 @@
     <br>
     <br>
     <div class="tab-content">
-    	<div id = "students" class="container tab-pane active text-center">
+    	<div id = "facultycourse" class="container tab-pane active text-center">
 	        <div>
-	            <h1>All Students</h1>
-	        </div>
+	            <h1>All Faculty Courses</h1>
+	        </div> 
 	        <div>
 	            <table class="table table-hover table-bordered">
 	                <thead class="table-info">
 	                    <tr>
-	                    	<th>Student ID</th>
-	                        <th>Name</th>
-	                        <th>Username</th>
-	                        <th>Email</th>
-	                        <th>Password</th>
-	                        <th>Actions</th>
+	                        <th>Faculty Last Name</th>
+	                        <th>Course Name</th>
+	                        <th>Department Name</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr th:each="student: ${students}">
-	                    	<td th:text="${student.id}"></td>
-	                        <td th:text="${student.name}"></td>
-	                        <td th:text="${student.username}"></td>
-	                        <td th:text="${student.email}"></td>
-	                        <td th:text="${student.password}"></td>
-	                        <td>
-	                        	<a th:href="@{/students/edit/{id}(id=${student.id})}"  class = "btn btn-primary">Update</a>
-	                        	<a th:href="@{/students/{id}(id=${student.id})}"  class = "btn btn-danger">Delete</a>
-	                        </td>
+	                    <tr th:each="facultyCourse: ${facultyCourses}">
+	                        <td th:text="${facultyCourse.faculty.lastname}"></td>
+	                        <td th:text="${facultyCourse.course.name}"></td>
+	                        <td th:text="${facultyCourse.course.department.name}"></td>
 	                    </tr>
 	                </tbody>
 	            </table>

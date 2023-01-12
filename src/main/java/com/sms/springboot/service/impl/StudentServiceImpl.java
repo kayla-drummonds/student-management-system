@@ -1,13 +1,11 @@
 package com.sms.springboot.service.impl;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sms.springboot.model.Student;
-import com.sms.springboot.model.StudentCourse;
 import com.sms.springboot.repository.StudentRepository;
 import com.sms.springboot.service.StudentService;
 
@@ -16,7 +14,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	private StudentRepository studentRepository;
-	
+
 	public StudentServiceImpl(StudentRepository studentRepository) {
 		super();
 		this.studentRepository = studentRepository;
@@ -33,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student getStudentById(Long id) {
+	public Student getStudentById(Integer id) {
 		return studentRepository.findById(id).get();
 	}
 
@@ -48,13 +46,8 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void deleteStudentById(Long id) {
-		studentRepository.deleteById(id);		
-	}
-
-	@Override
-	public List<StudentCourse> getAllStudentCourses() {
-		return studentRepository.findAllCoursesByStudentId();
+	public void deleteStudentById(Integer id) {
+		studentRepository.deleteById(id);
 	}
 
 }

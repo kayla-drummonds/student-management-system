@@ -9,71 +9,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "studentcourses")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentCourse {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name="student_id")
+	@JoinColumn(name = "student_id")
 	public Student student;
 
 	@ManyToOne
-	@JoinColumn(name="course_id")
+	@JoinColumn(name = "course_id")
 	public Course course;
 
 	@Column(name = "progress")
-	private double progress;
+	private Double progress;
 
-	public StudentCourse() {
-
-	}
-
-	public StudentCourse(Student student, Course course, double progress) {
-		this.student = student;
-		this.course = course;
-		this.progress = progress;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Student getStudent() {
-		return student;
-	}
-	
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	public double getProgress() {
-		return progress;
-	}
-
-	public void setProgress(double progress) {
-		this.progress = progress;
-	}
-
-	@Override
-	public String toString() {
-		return "StudentCourse [id=" + id + ", student=" + student + ", course=" + course + ", progress=" + progress
-				+ "]";
-	}
-		
 }

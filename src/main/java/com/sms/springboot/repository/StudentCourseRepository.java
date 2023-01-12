@@ -10,8 +10,8 @@ import com.sms.springboot.model.Student;
 import com.sms.springboot.model.StudentCourse;
 
 @Repository
-public interface StudentCourseRepository extends JpaRepository<StudentCourse, Long> {
-	
+public interface StudentCourseRepository extends JpaRepository<StudentCourse, Integer> {
+
 	@Query("select s from StudentCourse s join fetch s.student where s.student = ?1")
 	public List<StudentCourse> findByStudent(Student student);
 

@@ -10,7 +10,7 @@ import com.sms.springboot.service.StudentCourseService;
 
 @Service
 public class StudentCourseServiceImpl implements StudentCourseService {
-	
+
 	private StudentCourseRepository studentCourseRepository;
 
 	public StudentCourseServiceImpl(StudentCourseRepository studentCourseRepository) {
@@ -29,7 +29,7 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 	}
 
 	@Override
-	public StudentCourse getStudentCourseById(Long id) {
+	public StudentCourse getStudentCourseById(Integer id) {
 		return studentCourseRepository.findById(id).get();
 	}
 

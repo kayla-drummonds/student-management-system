@@ -16,23 +16,23 @@ public class DepartmentController {
 
 	@Autowired
 	private DepartmentServiceImpl departmentService;
-	
+
 	@Autowired
 	private CourseServiceImpl courseService;
-	
+
 	public DepartmentController(DepartmentServiceImpl departmentService) {
 		super();
 		this.departmentService = departmentService;
 	}
-	
+
 	@GetMapping("/departments")
 	public String listDepartments(Model model) {
 		model.addAttribute("departments", departmentService.getAllDepartments());
 		return "departments";
 	}
-	
+
 	@GetMapping("/departments/{id}")
-	public String listCoursesByDepartment(@PathVariable Long id, Model model) {
+	public String listCoursesByDepartment(@PathVariable Integer id, Model model) {
 		model.addAttribute("department_courses", courseService.getCourseByDepartmentId(id));
 		return "department_courses";
 	}

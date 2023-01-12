@@ -23,7 +23,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseById(Long id) {
+	public Course getCourseById(Integer id) {
 		return courseRepository.getById(id);
 	}
 
@@ -32,7 +32,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Course getCourseByDepartmentId(Long id) {
+	public Course getCourseByDepartmentId(Integer id) {
 		return courseRepository.findCourseByDepartmentId(id);
 	}
 }

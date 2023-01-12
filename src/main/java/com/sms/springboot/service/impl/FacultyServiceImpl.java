@@ -14,8 +14,7 @@ public class FacultyServiceImpl implements FacultyService {
 
 	@Autowired
 	private FacultyRepository facultyRepository;
-	
-	
+
 	public FacultyServiceImpl(FacultyRepository facultyRepository) {
 		super();
 		this.facultyRepository = facultyRepository;
@@ -27,7 +26,7 @@ public class FacultyServiceImpl implements FacultyService {
 	}
 
 	@Override
-	public Faculty getFacultyById(Long id) {
+	public Faculty getFacultyById(Integer id) {
 		return facultyRepository.findById(id).get();
 	}
 

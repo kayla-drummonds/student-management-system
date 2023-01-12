@@ -25,7 +25,7 @@ public class RestCourseController {
 
 	// build get a course by id REST API
 	@GetMapping("/{id}")
-	public Course getCourseById(@PathVariable("id") Long id) {
+	public Course getCourseById(@PathVariable("id") Integer id) {
 		Course course = courseService.getCourseById(id);
 		return course;
 	}

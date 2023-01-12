@@ -6,5 +6,6 @@ import com.sms.springboot.model.Faculty;
 
 public interface FacultyService {
 	List<Faculty> getAllFaculty();
-	Faculty getFacultyById(Long id);
+
+	Faculty getFacultyById(Integer id);
 }

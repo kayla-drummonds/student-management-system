@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public interface CourseService {
 	List<Course> getAllCourses();
-	Course getCourseById(Long id);
-	Course getCourseByDepartmentId(Long id);
+
+	Course getCourseById(Integer id);
+
+	Course getCourseByDepartmentId(Integer id);
 }

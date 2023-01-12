@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import com.sms.springboot.model.Course;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Course,Long> {
-	
+public interface CourseRepository extends JpaRepository<Course, Integer> {
+
 	@Query("select c from Course c join fetch c.department where c.department = ?1")
-	public Course findCourseByDepartmentId(Long id);
+	public Course findCourseByDepartmentId(Integer id);
 
 }

@@ -1,4 +1,4 @@
-package com.sms.springboot.restcontroller;
+package com.sms.springboot.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

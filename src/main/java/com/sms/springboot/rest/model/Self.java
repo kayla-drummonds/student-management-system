@@ -1,4 +1,4 @@
-package com.sms.springboot.model;
+package com.sms.springboot.rest.model;
 
 import lombok.Getter;
 import lombok.Setter;

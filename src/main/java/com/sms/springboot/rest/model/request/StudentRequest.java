@@ -1,4 +1,4 @@
-package com.sms.springboot.rest.model;
+package com.sms.springboot.rest.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentResponse {
-
-    private Integer id;
+public class StudentRequest {
+    private String id;
 
     private String username;
 
@@ -20,6 +19,4 @@ public class StudentResponse {
     private String email;
 
     private String password;
-
-    private Links links;
 }

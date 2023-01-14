@@ -3,6 +3,7 @@ package com.sms.springboot.rest.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.sms.springboot.model.Department;
 
@@ -23,6 +24,7 @@ public class CourseResponse {
 
     private String name;
 
+    @ManyToOne
     public Department department;
 
     private Links links;

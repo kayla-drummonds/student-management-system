@@ -3,7 +3,7 @@ package com.sms.springboot.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import com.sms.springboot.model.Student;
+//import com.sms.springboot.model.Student;
 import com.sms.springboot.model.StudentCourse;
 import com.sms.springboot.repository.StudentCourseRepository;
 import com.sms.springboot.service.StudentCourseService;
@@ -38,8 +38,8 @@ public class StudentCourseServiceImpl implements StudentCourseService {
 		return studentCourseRepository.save(studentCourse);
 	}
 
-	@Override
-	public List<StudentCourse> getStudentCourseByStudent(Student student) {
-		return studentCourseRepository.findByStudent(student);
-	}
+	// @Override
+	// public List<StudentCourse> getStudentCourseByStudent(Student student) {
+	// return studentCourseRepository.findByStudent(student);
+	// }
 }

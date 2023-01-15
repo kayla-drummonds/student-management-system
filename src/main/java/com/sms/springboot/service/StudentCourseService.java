@@ -17,5 +17,5 @@ public interface StudentCourseService {
 
 	StudentCourse updateStudentCourse(StudentCourse studentCourse);
 
-	List<StudentCourse> getStudentCourseByStudent(Student student);
+	// List<StudentCourse> getStudentCourseByStudent(Student student);
 }

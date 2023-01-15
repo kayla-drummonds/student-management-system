@@ -1,5 +1,6 @@
 package com.sms.springboot.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,7 +42,14 @@ public class Student {
 	@Column
 	private String password;
 
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "student", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
 	private List<StudentCourse> studentCourses;
+
+	public void addStudentCourse(StudentCourse studentCourse) {
+		if (studentCourses == null) {
+			studentCourses = new ArrayList<>();
+			studentCourses.add(studentCourse);
+		}
+	}
 
 }

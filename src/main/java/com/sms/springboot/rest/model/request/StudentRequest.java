@@ -1,5 +1,9 @@
 package com.sms.springboot.rest.model.request;
 
+import java.util.List;
+
+import com.sms.springboot.model.StudentCourse;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,4 +23,6 @@ public class StudentRequest {
     private String email;
 
     private String password;
+
+    private List<StudentCourse> studentCourses;
 }

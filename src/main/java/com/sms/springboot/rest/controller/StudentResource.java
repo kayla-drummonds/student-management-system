@@ -10,17 +10,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sms.springboot.model.Course;
 import com.sms.springboot.model.Student;
+import com.sms.springboot.model.StudentCourse;
+import com.sms.springboot.repository.CourseRepository;
 import com.sms.springboot.repository.PageableStudentRepository;
+import com.sms.springboot.repository.StudentCourseRepository;
 import com.sms.springboot.repository.StudentRepository;
 import com.sms.springboot.rest.ResourceConstants;
 import com.sms.springboot.rest.model.Links;
 import com.sms.springboot.rest.model.Self;
+import com.sms.springboot.rest.model.StudentCourseResponse;
 import com.sms.springboot.rest.model.StudentResponse;
+import com.sms.springboot.rest.model.request.StudentCourseRequest;
 import com.sms.springboot.rest.model.request.StudentRequest;
 
 @RestController
 @RequestMapping(ResourceConstants.STUDENTS_V1)
+@CrossOrigin
 public class StudentResource {
 
     @Autowired
@@ -29,9 +36,16 @@ public class StudentResource {
     @Autowired
     StudentRepository studentRepository;
 
+    @Autowired
+    StudentCourseRepository studentCourseRepository;
+
+    @Autowired
+    CourseRepository courseRepository;
+
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<StudentResponse> getStudentsList(
-            @RequestParam(value = "id", required = false) Integer id) {
+            @RequestParam(value = "course", required = false) Integer course,
+            @RequestParam(value = "progress", required = false) Double progress) {
 
         List<Student> studentsList = studentRepository.findAll();
 
@@ -60,10 +74,40 @@ public class StudentResource {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StudentResponse> createStudent(@RequestBody StudentRequest studentRequest) {
+        ObjectMapper mapper = new ObjectMapper();
+        Student s = mapper.convertValue(studentRequest, Student.class);
+        List<StudentCourse> sc = new ArrayList<>();
+        s.setStudentCourses(sc);
+        studentRepository.save(s);
         return new ResponseEntity<>(new StudentResponse(), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/addcourse", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<StudentCourseResponse> createStudentCourse(
+            @RequestBody StudentCourseRequest studentCourseRequest) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        StudentCourse sc = mapper.convertValue(studentCourseRequest, StudentCourse.class);
+        Student s = studentRepository.findById(studentCourseRequest.getStudent()).get();
+        Course c = courseRepository.findById(studentCourseRequest.getCourse()).get();
+        sc.setId(studentCourseRequest.getId());
+        sc.setStudent(s);
+        sc.setCourse(c);
+        sc.setProgress(studentCourseRequest.getProgress());
+        studentCourseRepository.save(sc);
+
+        Student student = studentRepository.findById(studentCourseRequest.getStudent()).get();
+        student.addStudentCourse(sc);
+        studentRepository.save(student);
+        sc.setStudent(student);
+        studentCourseRepository.save(sc);
+
+        System.out.println(sc.toString());
+
+        return new ResponseEntity<>(new StudentCourseResponse(), HttpStatus.CREATED);
+    }
+
+    @PutMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StudentResponse> updateStudent(@RequestBody StudentRequest studentRequest) {
         return new ResponseEntity<>(new StudentResponse(), HttpStatus.OK);
     }

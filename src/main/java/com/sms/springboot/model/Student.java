@@ -42,7 +42,7 @@ public class Student {
 	@Column
 	private String password;
 
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private List<StudentCourse> studentCourses;
 
 	public void addStudentCourse(StudentCourse studentCourse) {

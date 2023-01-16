@@ -26,19 +26,19 @@ public class StudentCourse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "student_id")
-	 * public Student student;
-	 */
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	public Student student;
 
-	@Column(name = "student_id")
-	public Integer student;
+	// @Column(name = "student_id")
+	// private Integer student;
 
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	public Course course;
+
+	// @Column(name = "course_id")
+	// private Integer course;
 
 	@Column(name = "progress")
 	private Double progress;

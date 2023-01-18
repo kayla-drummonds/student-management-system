@@ -9,16 +9,18 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 
-import com.sms.springboot.model.Student;
+import com.sms.springboot.rest.converter.StudentCourseRequestToStudentCourseConverter;
+import com.sms.springboot.rest.converter.StudentCourseToStudentCourseResponse;
 import com.sms.springboot.rest.converter.StudentToStudentResponseConverter;
-import com.sms.springboot.rest.model.StudentResponse;
 
 @Configuration
 public class ConversionConfig {
 
-    private Set<Converter<Student, StudentResponse>> getConverters() {
-        Set<Converter<Student, StudentResponse>> converters = new HashSet<>();
+    private Set<Converter> getConverters() {
+        Set<Converter> converters = new HashSet<>();
         converters.add(new StudentToStudentResponseConverter());
+        converters.add(new StudentCourseRequestToStudentCourseConverter());
+        converters.add(new StudentCourseToStudentCourseResponse());
 
         return converters;
     }

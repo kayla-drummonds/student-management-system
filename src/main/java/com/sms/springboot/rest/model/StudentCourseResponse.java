@@ -1,8 +1,5 @@
 package com.sms.springboot.rest.model;
 
-import com.sms.springboot.model.Course;
-import com.sms.springboot.model.Student;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

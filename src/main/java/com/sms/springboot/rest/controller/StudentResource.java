@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sms.springboot.model.Course;
 import com.sms.springboot.model.Student;
 import com.sms.springboot.model.StudentCourse;
 import com.sms.springboot.repository.CourseRepository;
@@ -20,9 +20,7 @@ import com.sms.springboot.repository.StudentRepository;
 import com.sms.springboot.rest.ResourceConstants;
 import com.sms.springboot.rest.model.Links;
 import com.sms.springboot.rest.model.Self;
-import com.sms.springboot.rest.model.StudentCourseResponse;
 import com.sms.springboot.rest.model.StudentResponse;
-import com.sms.springboot.rest.model.request.StudentCourseRequest;
 import com.sms.springboot.rest.model.request.StudentRequest;
 
 @RestController
@@ -41,6 +39,9 @@ public class StudentResource {
 
     @Autowired
     CourseRepository courseRepository;
+
+    @Autowired
+    ConversionService conversionService;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<StudentResponse> getStudentsList(
@@ -82,38 +83,14 @@ public class StudentResource {
         return new ResponseEntity<>(new StudentResponse(), HttpStatus.CREATED);
     }
 
-    @PostMapping(path = "/addcourse", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<StudentCourseResponse> createStudentCourse(
-            @RequestBody StudentCourseRequest studentCourseRequest) {
-
-        ObjectMapper mapper = new ObjectMapper();
-        StudentCourse sc = mapper.convertValue(studentCourseRequest, StudentCourse.class);
-        Student s = studentRepository.findById(studentCourseRequest.getStudent()).get();
-        Course c = courseRepository.findById(studentCourseRequest.getCourse()).get();
-        sc.setId(studentCourseRequest.getId());
-        sc.setStudent(s);
-        sc.setCourse(c);
-        sc.setProgress(studentCourseRequest.getProgress());
-        studentCourseRepository.save(sc);
-
-        Student student = studentRepository.findById(studentCourseRequest.getStudent()).get();
-        student.addStudentCourse(sc);
-        studentRepository.save(student);
-        sc.setStudent(student);
-        studentCourseRepository.save(sc);
-
-        System.out.println(sc.toString());
-
-        return new ResponseEntity<>(new StudentCourseResponse(), HttpStatus.CREATED);
-    }
-
-    @PutMapping(path = "/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StudentResponse> updateStudent(@RequestBody StudentRequest studentRequest) {
         return new ResponseEntity<>(new StudentResponse(), HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Integer id) {
+        studentRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -19,7 +19,7 @@ import com.sms.springboot.rest.model.response.CourseResponse;
 @RestController
 @RequestMapping(ResourceConstants.COURSES_V1)
 @CrossOrigin
-public class RestCourseController {
+public class CourseResource {
 
 	@Autowired
 	CourseRepository courseRepository;

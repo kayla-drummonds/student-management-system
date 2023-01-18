@@ -9,6 +9,7 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 
+import com.sms.springboot.rest.converter.CourseToCourseResponseConverter;
 import com.sms.springboot.rest.converter.StudentCourseRequestToStudentCourseConverter;
 import com.sms.springboot.rest.converter.StudentCourseToStudentCourseResponse;
 import com.sms.springboot.rest.converter.StudentToStudentResponseConverter;
@@ -21,7 +22,7 @@ public class ConversionConfig {
         converters.add(new StudentToStudentResponseConverter());
         converters.add(new StudentCourseRequestToStudentCourseConverter());
         converters.add(new StudentCourseToStudentCourseResponse());
-
+        converters.add(new CourseToCourseResponseConverter());
         return converters;
     }
 

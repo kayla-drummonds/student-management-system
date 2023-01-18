@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.sms.springboot.model.Student;
 import com.sms.springboot.model.StudentCourse;
 
 @Component

@@ -7,7 +7,7 @@ import com.sms.springboot.model.Student;
 import com.sms.springboot.rest.ResourceConstants;
 import com.sms.springboot.rest.model.Links;
 import com.sms.springboot.rest.model.Self;
-import com.sms.springboot.rest.model.StudentResponse;
+import com.sms.springboot.rest.model.response.StudentResponse;
 
 public class StudentToStudentResponseConverter implements Converter<Student, StudentResponse> {
 

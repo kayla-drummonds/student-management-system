@@ -1,4 +1,4 @@
-package com.sms.springboot.rest.model;
+package com.sms.springboot.rest.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

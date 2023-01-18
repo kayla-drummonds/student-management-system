@@ -20,8 +20,8 @@ import com.sms.springboot.repository.StudentRepository;
 import com.sms.springboot.rest.ResourceConstants;
 import com.sms.springboot.rest.model.Links;
 import com.sms.springboot.rest.model.Self;
-import com.sms.springboot.rest.model.StudentResponse;
 import com.sms.springboot.rest.model.request.StudentRequest;
+import com.sms.springboot.rest.model.response.StudentResponse;
 
 @RestController
 @RequestMapping(ResourceConstants.STUDENTS_V1)

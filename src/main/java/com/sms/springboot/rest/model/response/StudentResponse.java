@@ -1,8 +1,9 @@
-package com.sms.springboot.rest.model;
+package com.sms.springboot.rest.model.response;
 
 import java.util.List;
 
 import com.sms.springboot.model.StudentCourse;
+import com.sms.springboot.rest.model.Links;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -3,8 +3,6 @@ package com.sms.springboot.rest.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.standard.Media;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
@@ -25,8 +23,8 @@ import com.sms.springboot.repository.CourseRepository;
 import com.sms.springboot.repository.StudentCourseRepository;
 import com.sms.springboot.repository.StudentRepository;
 import com.sms.springboot.rest.ResourceConstants;
-import com.sms.springboot.rest.model.StudentCourseResponse;
 import com.sms.springboot.rest.model.request.StudentCourseRequest;
+import com.sms.springboot.rest.model.response.StudentCourseResponse;
 
 @RestController
 @RequestMapping(ResourceConstants.STUDENTCOURSES_V1)

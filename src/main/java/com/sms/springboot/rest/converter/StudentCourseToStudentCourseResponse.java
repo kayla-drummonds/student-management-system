@@ -4,7 +4,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;
 
 import com.sms.springboot.model.StudentCourse;
-import com.sms.springboot.rest.model.StudentCourseResponse;
+import com.sms.springboot.rest.model.response.StudentCourseResponse;
 
 public class StudentCourseToStudentCourseResponse implements Converter<StudentCourse, StudentCourseResponse> {
 

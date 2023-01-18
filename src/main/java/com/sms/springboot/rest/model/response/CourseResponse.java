@@ -1,4 +1,4 @@
-package com.sms.springboot.rest.model;
+package com.sms.springboot.rest.model.response;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.sms.springboot.model.Department;
+import com.sms.springboot.rest.model.Links;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
